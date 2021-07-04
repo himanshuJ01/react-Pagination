@@ -70,7 +70,7 @@ const Posts = () => {
 
                 </ul>
               </nav>
-}
+
     </div>
 
   };
