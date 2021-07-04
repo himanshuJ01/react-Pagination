@@ -7,7 +7,8 @@ const pageSize = 10;
 const Posts = () => {
     const [posts, setposts] = useState();
     const [paginatedPosts, setpaginatedPosts] = useState();
-    const [currentPage, setcurrentPage] = useState(1);
+    // const [currentPage, setcurrentPage] = useState(1);
+    
     useEffect(() => {
         axios.get("https://reqres.in/api/users?page=2")
         .then((res) => {
@@ -17,16 +18,16 @@ const Posts = () => {
         }); 
     }, []);
 
-    const pageCount = posts ? Math.ceil(posts.length/pageSize) :0;
-    if (pageCount === 1) return null;
-    const pages = _.range(1, pageCount + 1);
+    // const pageCount = posts ? Math.ceil(posts.length/pageSize) :0;
+    // if (pageCount === 1) return null;
+    // const pages = _.range(1, pageCount + 1);
 
-    const pagination = (pageNo) => {
-      setcurrentPage(pageNo);
-      const startIndex = (pageNo - 1) * pageSize;
-      const paginatedPosts = _(posts).data.slice(startIndex).take(pageSize).value();
-      setpaginatedPosts(paginatedPosts);
-    }
+    // const pagination = (pageNo) => {
+    //   setcurrentPage(pageNo);
+    //   const startIndex = (pageNo - 1) * pageSize;
+    //   const paginatedPosts = _(posts).data.slice(startIndex).take(pageSize).value();
+    //   setpaginatedPosts(paginatedPosts);
+    //}
     return <div className="container">{
           !paginatedPosts ? ("No data found"):(
               <table className="table">
@@ -48,7 +49,7 @@ const Posts = () => {
                                   <td>{post.first_name}</td>
                                   <td>{post.last_name}</td>
                                   <td>{post.email}</td>
-                                  <td><img src={post.avatar}></img></td>
+                                  <td><img src={post.avatar} alt="avatar"></img></td>
                                   </tr>
                               ))} 
               </tbody>
